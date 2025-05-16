@@ -1,0 +1,47 @@
+﻿@using Sporting.Models.TopSoccerModels
+@model List<TopScorer>
+
+@{
+    ViewData["Title"] = "Top Soccer Scorers";
+}
+
+<h2>Top Scorers</h2>
+
+<form method="get" asp-action="TopScorers">
+    <div class="form-inline mb-3">
+        <label class="mr-2">League:</label>
+        <select name="leagueId" asp-items="ViewBag.Leagues" class="form-control mr-3"></select>
+
+        <label class="mr-2">Season:</label>
+        <select name="season" asp-items="ViewBag.Seasons" class="form-control mr-3"></select>
+
+        <button type="submit" class="btn btn-primary">Filter</button>
+    </div>
+</form>
+
+<h2>Top Soccer Scorers</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Photo</th>
+            <th>Name</th>
+            <th>Nationality</th>
+            <th>Team</th>
+            <th>Goals</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var player in Model)
+        {
+            var stats = player.Statistics.FirstOrDefault();
+            <tr>
+                <td><img src="@player.Player.Photo" width="40" /></td>
+                <td>@player.Player.Name</td>
+                <td>@player.Player.Nationality</td>
+                <td>@stats?.Team?.Name</td>
+                <td>@stats?.Goals?.Total</td>
+            </tr>
+        }
+    </tbody>
+</table>

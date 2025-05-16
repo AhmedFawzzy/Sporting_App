@@ -1,0 +1,33 @@
+﻿@using Sporting.Models.LeagueModels
+@model List<LeagueResponse>
+
+@{
+    ViewData["Title"] = "Football Leagues";
+}
+
+<h2>Football Leagues</h2>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Logo</th>
+            <th>League Name</th>
+            <th>Country</th>
+            <th>Type</th>
+            <th>Season</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            var currentSeason = item.Seasons.FirstOrDefault(s => s.Current);
+            <tr>
+                <td><img src="@item.League.Logo" width="30" /></td>
+                <td>@item.League.Name</td>
+                <td>@item.Country.Name</td>
+                <td>@item.League.Type</td>
+                <td>@(currentSeason?.Year ?? 0)</td>
+            </tr>
+        }
+    </tbody>
+</table>

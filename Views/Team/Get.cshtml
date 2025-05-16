@@ -1,0 +1,34 @@
+@model Sporting.Models.Team
+
+<div class="container mt-4">
+    <h2>Team Details</h2>
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">@Model.Name</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    @if (!string.IsNullOrEmpty(Model.Logo))
+                    {
+                        <img src="@Model.Logo" alt="Team Logo" class="img-fluid mb-3" style="max-width: 200px;" />
+                    }
+                    else
+                    {
+                        <i class="fas fa-futbol fa-5x text-primary"></i>
+                    }
+                </div>
+                <div class="col-md-8">
+                    <dl class="row">
+                        <dt class="col-sm-3">Name</dt>
+                        <dd class="col-sm-9">@Model.Name</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a asp-action="UpdateTeam" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+            <a asp-action="GetAll" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,94 @@
+html {
+    font-size: 14px;
+    font-family: 'Sakkal Majalla', sans-serif;
+}
+
+
+.navbar {
+    padding: 0.5rem 1rem;
+}
+
+.navbar-brand {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+    .navbar-brand img {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+    }
+
+.nav-link {
+    font-size: 14px;
+    /*padding: 0.4rem 0.8rem !important;*/
+}
+    .nav-link:hover {
+        color: #007bff !important;
+        transform: translateY(-2px);
+    }
+
+.navbar-nav {
+    font-size: 14px;
+    padding: 0.4rem 0.8rem !important;
+}
+
+
+@media (min-width: 768px) {
+    html {
+    font-size: 16px;
+  }
+}
+.card {
+    transition: transform 0.2s;
+    font-family: 'Sakkal Majalla', sans-serif;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+.card-header {
+    border-bottom: none;
+    font-family: 'Sakkal Majalla', sans-serif;
+}
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+    font-family: 'Sakkal Majalla', sans-serif;
+}
+.dark-mode-toggle {
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15px;
+}
+
+[data-bs-theme="dark"] {
+    color-scheme: dark;
+}
+
+    [data-bs-theme="dark"] .navbar {
+        background-color: #212529 !important;
+    }
+
+    [data-bs-theme="dark"] .navbar-light .navbar-nav .nav-link {
+        color: rgba(255, 255, 255, 0.85) !important;
+    }
+
+    [data-bs-theme="dark"] .navbar-brand {
+        color: white !important;
+    }
+
+body {
+    margin-bottom: 60px;
+    font-family: 'Sakkal Majalla', sans-serif;
+}

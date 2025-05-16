@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Sporting</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/Sporting.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+       
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid"style="padding-right:100ox" >
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"> 
+                    <img src="~/Images/player.png" style="width:40px;height:40px;" /> Sporting
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button> 
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav me-auto ps-5">
+                        <li class="nav-item px-3">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="League" asp-action="GetLeagues"><img src="~/Images/ball.png" style="width:30px;height:30px;" /> Matches</a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Football" asp-action="Leagues"><img src="~/Images/ball.png" style="width:30px;height:30px;" /> Top Leagues</a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="League" asp-action="GetLeagues"><img src="~/Images/ball.png" style="width:30px;height:30px;"/> All Leagues</a>
+                        </li>
+                        
+                        <li class="nav-item px-3 dropdown">
+                            <a class="nav-link text-dark dropdown-toggle" href="#" id="teamsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="~/Images/ball.png" style="width:30px;height:30px;" /> Teams
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="teamsDropdown">
+                                @* <li><a class="dropdown-item" asp-controller="Team" asp-action="GetTeams">All Teams</a></li> *@
+                                @* <li><hr class="dropdown-divider"></li> *@
+                                  @await Component.InvokeAsync("LeagueList") 
+                            </ul>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link text-dark" asp-controller="Football" asp-action="TopScorers">
+                                <img src="~/Images/golden.png" style="width:30px;height:30px;" /> Top Scorers
+                            </a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+                        </li>
+                        
+                       @*  <li class="nav-item px-3">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li> *@
+                    </ul>
+                    <div class="dark-mode-toggle ms-3" onclick="toggleDarkMode()">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2025 - Sporting - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    
+</body>
+</html>

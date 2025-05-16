@@ -1,0 +1,64 @@
+@model IEnumerable<Sporting.Models.Team>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <League class="mb-4">Teams League</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var team in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="card-title mb-0">@team.Name</h5>
+                        </div>
+                        <div class="card-body text-center">
+                            @if (!string.IsNullOrEmpty(team.Logo))
+                            {
+                                <img src="@team.Logo" alt="@team.Name Logo" class="img-fluid mb-3" style="max-height: 150px;" />
+                            }
+                            else
+                            {
+                                <i class="fas fa-futbol fa-4x text-primary mb-3"></i>
+                            }
+                        </div>
+                        <div class="card-footer bg-light">
+                            <div class="btn-group w-100">
+                                <a asp-action="Get" asp-route-id="@team.Id" class="btn btn-info">
+                                    <i class="fas fa-info-circle"></i> Details
+                                </a>
+                                <a asp-action="UpdateTeam" asp-route-id="@team.Id" class="btn btn-warning">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                                <a asp-action="DeleteTeam" asp-route-id="@team.Id" class="btn btn-danger">
+                                    <i class="fas fa-trash"></i> Delete
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12 text-center">
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle me-2"></i>No teams found in this league.
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">
+                <i class="fas fa-arrow-left me-2"></i>Back to Home
+            </a>
+        </div>
+    </div>
+</div>

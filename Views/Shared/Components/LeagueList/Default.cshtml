@@ -1,0 +1,10 @@
+@model IEnumerable<Sporting.Models.League>
+
+@foreach (var league in Model)
+{
+    <li>
+        <a class="dropdown-item" asp-controller="league" asp-action="GetTeamsByLeague" asp-route-LeagueId="@league.Id">
+            @league.Name
+        </a>
+    </li>
+}

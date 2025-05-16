@@ -1,0 +1,38 @@
+@model Sporting.Models.Team
+
+<div class="container mt-4">
+    <h2>Update Team</h2>
+
+    <form asp-action="UpdateTeam" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="Logo" />
+
+        <div class="form-group">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        @if (!string.IsNullOrEmpty(Model.Logo))
+        {
+            <div class="form-group mt-3">
+                <label>Current Logo:</label>
+                <img src="@Model.Logo" alt="Current Logo" style="max-width: 200px;" />
+            </div>
+        }
+
+        <div class="form-group mt-3">
+            <label asp-for="Logo" class="control-label">New Logo</label>
+            <input type="file" name="logoFile" class="form-control" />
+        </div>
+
+        <div class="form-group mt-3">
+            <input type="submit" value="Update" class="btn btn-primary" />
+            <a asp-action="GetAll" class="btn btn-secondary">Back to List</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

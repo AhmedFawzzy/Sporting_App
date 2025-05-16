@@ -1,0 +1,35 @@
+@model IEnumerable<Sporting.Models.Team>
+
+
+<div class="container mt-5">
+    <div class="text-left mb-4">
+        <h2>Teams in League </h2>
+    </div>
+
+    <div class="row justify-content-center">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm rounded-lg h-100">
+                    <div class="card-header bg-primary text-white text-center rounded-top">
+                        <h5 class="mb-0">@item.Name</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        @if (!string.IsNullOrEmpty(item.Logo))
+                        {
+                            <img src="@item.Logo" alt="Team Logo" class="img-fluid mb-3" style="max-height: 100px;" />
+                        }
+                        else
+                        {
+                            <i class="fas fa-futbol fa-4x mb-3 text-primary"></i>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="mt-4">
+        <a asp-action="GetLeagues" class="btn btn-secondary">Back to Leagues</a>
+    </div>
+</div>
